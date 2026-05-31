@@ -1,105 +1,108 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- PERSONALIZAR: Tu nombre -->
-  <title>Tu Nombre</title>
+  <!-- TÍTULO DE LA PESTAÑA PERSONALIZADO -->
+  <title>Alejandra Ulloa | Portfolio</title>
+  
+  <link rel="icon" type="image/jpeg" href="assets/images/foto.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      /* PERSONALIZAR: Cambia el color primario para ajustar toda la paleta */
-      --primary: #1a2744;
-      --primary-light: #eef1f8;
-      --body-text: #374151;
-      --bg-alt: #f8fafc;
-      --border: #e2e8f0;
-      --white: #ffffff;
-      --font: 'Inter', sans-serif;
+      --primary: #00e5ff;        
+      --primary-light: #121214;  
+      --body-text: #f3f4f6;      
+      --bg-alt: #08080a;         
+      --border: #1f2023;         
+      --white: #0d0e10;          
+      --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; 
       --max-w: 900px;
-      --radius: 8px;
+      --radius: 12px;            
     }
 
     html { scroll-behavior: smooth; }
 
     body {
       font-family: var(--font);
-      font-size: 1rem;
+      font-size: 1.1rem;         
       color: var(--body-text);
-      line-height: 1.65;
+      line-height: 1.7;
       background: var(--white);
     }
 
-    /* --- NAV ------------------------------------------------- */
+    /* --- NAV --- */
     .nav {
       position: fixed;
       top: 0; left: 0; right: 0;
       z-index: 100;
-      background: var(--white);
-      border-bottom: 1px solid transparent;
-      transition: border-color 0.2s, box-shadow 0.2s;
+      background: rgba(13, 14, 16, 0.85); 
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      transition: box-shadow 0.2s;
     }
     .nav.scrolled {
-      border-bottom-color: var(--border);
-      box-shadow: 0 1px 8px rgba(0,0,0,0.07);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
     }
     .nav-inner {
       max-width: var(--max-w);
       margin: 0 auto;
       padding: 0 2rem;
-      height: 60px;
+      height: 65px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 1rem;
     }
     .nav-brand {
-      font-size: 0.9rem;
-      font-weight: 600;
-      color: var(--primary);
-      white-space: nowrap;
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--body-text);
       text-decoration: none;
     }
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 1.5rem;
+      gap: 1.75rem;
       list-style: none;
     }
     .nav-links a {
-      font-size: 0.85rem;
+      font-size: 0.95rem;
       font-weight: 500;
-      color: var(--body-text);
+      color: #9ca3af;            
       text-decoration: none;
       transition: color 0.15s;
     }
     .nav-links a:hover { color: var(--primary); }
     .lang-toggle {
-      background: none;
-      border: 1.5px solid var(--border);
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border);
       border-radius: 20px;
-      padding: 0.2rem 0.75rem;
-      font-size: 0.8rem;
+      padding: 0.3rem 0.85rem;
+      font-size: 0.85rem;
       font-weight: 600;
       font-family: var(--font);
-      color: var(--primary);
+      color: var(--body-text);
       cursor: pointer;
       display: flex;
       gap: 0.25rem;
       align-items: center;
       white-space: nowrap;
-      transition: background 0.15s, border-color 0.15s;
+      transition: border-color 0.15s;
     }
-    .lang-toggle:hover { background: var(--primary-light); border-color: var(--primary); }
+    .lang-toggle:hover { border-color: var(--primary); }
     .lang-toggle span { opacity: 0.4; }
-    .lang-toggle span.active { opacity: 1; }
+    .lang-toggle span.active { opacity: 1; color: var(--primary); }
 
+    /* --- CORRECCIÓN DE LA HAMBURGUESA --- */
     .nav-hamburger {
-      display: none;
+      display: none;        
       background: none;
       border: none;
       cursor: pointer;
@@ -109,47 +112,51 @@
     }
     .nav-hamburger span {
       display: block;
-      width: 22px; height: 2px;
-      background: var(--primary);
+      width: 22px; 
+      height: 2px;
+      background: var(--body-text); 
       border-radius: 2px;
       transition: 0.2s;
     }
+    
     @media (max-width: 768px) {
       .nav-links { display: none; }
       .nav-links.open {
         display: flex;
         flex-direction: column;
         position: absolute;
-        top: 60px; left: 0; right: 0;
+        top: 65px; left: 0; right: 0;
         background: var(--white);
         border-bottom: 1px solid var(--border);
         padding: 1rem 2rem 1.5rem;
         gap: 1rem;
         align-items: flex-start;
       }
-      .nav-hamburger { display: flex; }
+      .nav-hamburger { 
+        display: flex;      
+      }
     }
 
-    /* --- SECTIONS -------------------------------------------- */
-    section { padding: 5rem 2rem; }
+    /* --- SECTIONS --- */
+    section { padding: 7rem 2rem; }
     .section-inner { max-width: var(--max-w); margin: 0 auto; }
 
     .section-title {
-      font-size: 0.75rem;
+      font-size: 0.85rem;
       font-weight: 700;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.15em;
       text-transform: uppercase;
-      color: var(--primary);
-      margin-bottom: 2.5rem;
+      color: var(--primary);     
+      margin-bottom: 3rem;
       display: flex;
       align-items: center;
-      gap: 0.6rem;
+      gap: 0.75rem;
     }
     .section-title::before {
       content: "";
-      width: 3px; height: 14px;
+      width: 4px; height: 16px;
       background: var(--primary);
-      border-radius: 2px;
+      border-radius: 4px;
       flex-shrink: 0;
     }
     .section-title::after {
@@ -158,11 +165,11 @@
       background: var(--border);
     }
 
-    /* --- HERO ------------------------------------------------ */
+    /* --- HERO --- */
     #hero {
-      background: var(--primary);
+      background: var(--white);
       min-height: 100vh;
-      padding-top: calc(60px + 4rem);
+      padding-top: calc(65px + 4rem);
       padding-bottom: 4rem;
       display: flex;
       align-items: center;
@@ -175,85 +182,72 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 3rem;
+      gap: 4rem;
     }
     .hero-text { flex: 1; }
     .hero-label {
-      font-size: 0.78rem;
+      font-size: 0.85rem;
       font-weight: 600;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.55);
-      margin-bottom: 0.75rem;
-    }
-    .hero-name {
-      font-size: clamp(2rem, 5vw, 3rem);
-      font-weight: 700;
-      color: var(--white);
-      line-height: 1.15;
+      color: #9ca3af;
       margin-bottom: 1rem;
     }
+    .hero-name {
+      font-size: clamp(2.5rem, 6vw, 3.75rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;    
+      color: var(--body-text);
+      line-height: 1.15;
+      margin-bottom: 1.25rem;
+    }
     .hero-tagline {
-      font-size: 1.1rem;
+      font-size: 1.2rem;          
       font-weight: 400;
-      color: rgba(255,255,255,0.75);
-      margin-bottom: 2rem;
-      max-width: 480px;
+      color: #9ca3af;            
+      margin-bottom: 2.5rem;
+      max-width: 580px;
     }
     .hero-ctas {
       display: flex;
-      gap: 0.75rem;
+      gap: 0.85rem;
       flex-wrap: wrap;
     }
     .btn {
       display: inline-flex;
       align-items: center;
-      gap: 0.4rem;
-      padding: 0.55rem 1.2rem;
-      border-radius: 6px;
-      font-size: 0.875rem;
+      gap: 0.5rem;
+      padding: 0.7rem 1.5rem;
+      border-radius: var(--radius);
+      font-size: 0.95rem;
       font-weight: 600;
       font-family: var(--font);
       text-decoration: none;
-      transition: opacity 0.15s, transform 0.15s;
+      transition: all 0.2s ease;
       cursor: pointer;
       border: none;
     }
-    .btn:hover { opacity: 0.85; transform: translateY(-1px); }
-    .btn-white { background: var(--white); color: var(--primary); }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-white { 
+      background: var(--primary); 
+      color: #000000;
+      box-shadow: 0 4px 20px rgba(0, 229, 255, 0.2);
+    }
+    .btn-white:hover { 
+      background: #33ebff;
+      box-shadow: 0 6px 24px rgba(0, 229, 255, 0.3);
+    }
     .btn-outline {
-      background: transparent;
-      color: var(--white);
-      border: 1.5px solid rgba(255,255,255,0.4);
-    }
-    .btn-outline:hover { border-color: rgba(255,255,255,0.8); }
-
-    .hero-photo { flex-shrink: 0; }
-    .hero-photo img {
-      width: 180px; height: 180px;
-      border-radius: 50%;
-      object-fit: cover;
-      object-position: center top;
-      border: 3px solid rgba(255,255,255,0.3);
-      display: block;
-    }
-
-    @media (max-width: 768px) {
-      #hero { align-items: flex-start; }
-      .hero-inner { flex-direction: column-reverse; align-items: flex-start; gap: 2rem; }
-      .hero-photo img { width: 120px; height: 120px; }
-    }
-
-    /* --- ABOUT ----------------------------------------------- */
-    #sobre-mi { background: var(--white); }
-    .profile-text {
-      font-size: 1.05rem;
-      line-height: 1.75;
+      background: rgba(255, 255, 255, 0.02);
       color: var(--body-text);
-      max-width: 700px;
+      border: 1px solid var(--border);
+    }
+    .btn-outline:hover { 
+      border-color: var(--primary); 
+      background: rgba(255, 255, 255, 0.05); 
     }
 
-    /* --- EXPERIENCE ------------------------------------------ */
+    /* --- EXPERIENCE --- */
     #experiencia { background: var(--bg-alt); }
     .jobs { display: flex; flex-direction: column; gap: 1.5rem; }
     .job-card {
@@ -264,39 +258,41 @@
     }
     .job-card.current { border-left-color: var(--primary); }
     .job-header { margin-bottom: 0.75rem; }
-    .job-company { font-size: 1rem; font-weight: 700; color: var(--primary); }
-    .job-role { font-size: 0.9rem; font-weight: 500; color: var(--body-text); }
-    .job-period { font-size: 0.8rem; color: #6b7280; margin-top: 0.2rem; }
+    .job-company { font-size: 1.1rem; font-weight: 700; color: var(--primary); }
+    .job-role { font-size: 1rem; font-weight: 500; color: var(--body-text); margin-top: 0.1rem; }
+    .job-period { font-size: 0.85rem; color: #9ca3af; margin-top: 0.2rem; }
     .job-bullets {
       margin-top: 0.75rem;
       padding-left: 1.1rem;
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       color: var(--body-text);
+      opacity: 0.9;
     }
-    .job-bullets li { margin-bottom: 0.35rem; }
+    .job-bullets li { margin-bottom: 0.45rem; }
 
-    /* --- SKILLS ---------------------------------------------- */
+    /* --- SKILLS --- */
     #habilidades { background: var(--white); }
     .skills-grid { display: flex; flex-direction: column; gap: 1.75rem; }
     .skill-category-label {
-      font-size: 0.78rem;
+      font-size: 0.85rem;
       font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: #6b7280;
+      color: #9ca3af;
       margin-bottom: 0.6rem;
     }
-    .chips { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .chips { display: flex; flex-wrap: wrap; gap: 0.5rem; }
     .chip {
       background: var(--primary-light);
-      color: var(--primary);
-      font-size: 0.82rem;
+      color: var(--body-text);
+      border: 1px solid var(--border);
+      font-size: 0.88rem;
       font-weight: 500;
-      padding: 0.25rem 0.65rem;
-      border-radius: 4px;
+      padding: 0.35rem 0.85rem;
+      border-radius: 20px;
     }
 
-    /* --- PROJECTS -------------------------------------------- */
+    /* --- PROJECTS --- */
     #proyectos { background: var(--bg-alt); }
     .projects-grid {
       display: grid;
@@ -309,9 +305,12 @@
       border-radius: var(--radius);
       padding: 1.5rem;
       border: 1px solid var(--border);
-      transition: box-shadow 0.2s;
+      transition: box-shadow 0.2s, border-color 0.2s;
     }
-    .project-card:hover { box-shadow: 0 4px 16px rgba(26,39,68,0.1); }
+    .project-card:hover { 
+      box-shadow: 0 4px 20px rgba(0,0,0,0.4); 
+      border-color: var(--primary);
+    }
     .project-badge {
       display: inline-block;
       font-size: 0.72rem;
@@ -322,16 +321,16 @@
       border-radius: 3px;
       margin-bottom: 0.75rem;
     }
-    .badge-personal { background: var(--primary-light); color: var(--primary); }
-    .badge-wip { background: #fef3c7; color: #92400e; }
-    .project-title { font-size: 1rem; font-weight: 700; color: var(--primary); margin-bottom: 0.4rem; }
-    .project-subtitle { font-size: 0.85rem; color: #6b7280; margin-bottom: 0.75rem; }
-    .project-desc { font-size: 0.9rem; color: var(--body-text); line-height: 1.6; }
-    .project-meta { margin-top: 0.75rem; font-size: 0.8rem; color: #6b7280; }
+    .badge-personal { background: var(--primary-light); color: var(--primary); border: 1px solid var(--border); }
+    .badge-wip { background: #f59e0b; color: #020617; }
+    .project-title { font-size: 1.1rem; font-weight: 700; color: var(--primary); margin-bottom: 0.4rem; }
+    .project-subtitle { font-size: 0.9rem; color: #9ca3af; margin-bottom: 0.75rem; }
+    .project-desc { font-size: 0.95rem; color: var(--body-text); opacity: 0.85; line-height: 1.6; }
 
-    /* --- FOOTER ---------------------------------------------- */
+    /* --- FOOTER --- */
     footer {
-      background: var(--primary);
+      background: var(--white);
+      border-top: 1px solid var(--border);
       padding: 4rem 2rem;
     }
     .footer-inner {
@@ -343,22 +342,39 @@
       gap: 1.5rem;
       text-align: center;
     }
-    .footer-name { font-size: 1.25rem; font-weight: 700; color: var(--white); }
-    .footer-tagline { font-size: 0.9rem; color: rgba(255,255,255,0.6); }
-    .footer-links { display: flex; gap: 1.5rem; align-items: center; }
+    .footer-name { font-size: 1.25rem; font-weight: 700; color: var(--body-text); }
+    .footer-tagline { font-size: 0.95rem; color: #9ca3af; max-width: 600px; }
+    .footer-links { display: flex; gap: 1.5rem; align-items: center; flex-wrap: wrap; justify-content: center; }
     .footer-link {
-      color: rgba(255,255,255,0.75);
+      color: #9ca3af;
       text-decoration: none;
-      font-size: 0.875rem;
+      font-size: 0.9rem;
       font-weight: 500;
       display: flex;
       align-items: center;
       gap: 0.35rem;
       transition: color 0.15s;
     }
-    .footer-link:hover { color: var(--white); }
-    .footer-link svg { flex-shrink: 0; }
-    .footer-copy { font-size: 0.78rem; color: rgba(255,255,255,0.35); margin-top: 0.5rem; }
+    .footer-link:hover { color: var(--primary); }
+    .footer-copy { font-size: 0.78rem; color: #6b7280; margin-top: 0.5rem; }
+
+    /* --- FOTO DEL HERO CON EL ZOOM DE 1.5 CORREGIDO --- */
+    .hero-photo {
+      width: 240px;
+      height: 240px;
+      border-radius: 50%;
+      overflow: hidden;          
+      border: 2px solid var(--border);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    }
+    .hero-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+      display: block;
+      transform: scale(1.5);     
+    }
   </style>
 </head>
 <body>
@@ -366,8 +382,7 @@
   <!-- NAV -->
   <nav class="nav" id="main-nav">
     <div class="nav-inner">
-      <!-- PERSONALIZAR: Tu nombre -->
-      <a href="#hero" class="nav-brand">Tu Nombre</a>
+      <a href="#hero" class="nav-brand">Alejandra Ulloa</a>
       <ul class="nav-links" id="nav-links">
         <li><a href="#sobre-mi" data-i18n="navAbout">Sobre mí</a></li>
         <li><a href="#experiencia" data-i18n="navExperience">Experiencia</a></li>
@@ -376,9 +391,9 @@
         <li><a href="#contacto" data-i18n="navContact">Contacto</a></li>
       </ul>
       <button class="lang-toggle" id="lang-btn" onclick="toggleLang()" aria-label="Switch language">
-        <span id="lang-es" class="active">ES</span>
+        <span id="lang-en" class="active">EN</span>
         <span style="opacity:0.25;">/</span>
-        <span id="lang-en">EN</span>
+        <span id="lang-es">ES</span>
       </button>
       <button class="nav-hamburger" id="hamburger" aria-label="Menu" onclick="toggleMenu()">
         <span></span><span></span><span></span>
@@ -390,28 +405,38 @@
   <section id="hero">
     <div class="hero-inner">
       <div class="hero-text">
-        <!-- PERSONALIZAR: Etiqueta, nombre, tagline y links -->
         <p class="hero-label" data-i18n="heroLabel">Portafolio profesional</p>
-        <h1 class="hero-name">Tu<br>Nombre</h1>
-        <p class="hero-tagline" data-i18n="heroTagline">Tu tagline profesional aquí</p>
+        <h1 class="hero-name">Alejandra<br>Ulloa</h1>
+        
+        <p class="hero-tagline lang-block" data-lang="es" style="display:none;">
+          Desarrolladora Full Stack Junior (MEAN) enfocada en crear apps web escalables con Angular, Node.js, Express y MongoDB/MySQL. Experiencia práctica en backend estructurado, testing automatizado (Jasmine/Cypress) y diseño UX/UI enfocado en usabilidad. Trabajo bajo metodología Scrum, optimizando el ciclo del software y flujos de trabajo apoyados en IA.
+        </p>
+        <p class="hero-tagline lang-block" data-lang="en">
+          Junior Full Stack Developer (MEAN) focused on creating scalable web applications with Angular, Node.js, Express, and MongoDB/MySQL. Hands-on experience in structured backend development, automated testing (Jasmine/Cypress), and usability-focused UX/UI design. Proficient in Scrum methodology, optimizing the software development lifecycle and workflows with AI support.
+        </p>
+
         <div class="hero-ctas">
-          <a href="https://linkedin.com/in/tu-perfil" target="_blank" rel="noopener" class="btn btn-white">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          <!-- LINKEDIN CORREGIDO -->
+          <a href="https://www.linkedin.com/in/alejandraulloa/" target="_blank" rel="noopener" class="btn btn-white">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M22.23 0H1.77C.8 0 0 .77 0 1.72v20.56C0 23.23.8 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.72V1.72C24 .77 23.2 0 22.23 0zM7.12 20.45H3.56V9h3.56v11.45zM5.34 7.55c-1.14 0-2.06-.92-2.06-2.05 0-1.14.92-2.06 2.06-2.06 1.14 0 2.06.92 2.06 2.06 0 1.13-.92 2.05-2.06 2.05zm15.11 12.9H16.9v-5.61c0-1.34-.03-3.05-1.86-3.05-1.86 0-2.14 1.45-2.14 2.95v5.71H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29z"/></svg>
             LinkedIn
           </a>
-          <a href="https://github.com/tu-usuario" target="_blank" rel="noopener" class="btn btn-outline">
+          
+          <!-- WHATSAPP -->
+          <a href="https://wa.me/524494148850?text=Hi%20Alejandra,%20I%20visited%20your%20portfolio%20and%20I'd%20like%20to%20connect!" target="_blank" rel="noopener" class="btn btn-outline" style="border-color: #25d366; color: #25d366;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.003 5.372 5.378 0 12.013 0c3.213.012 6.233 1.277 8.503 3.564 2.27 2.288 3.523 5.322 3.52 8.536-.006 6.645-5.38 12.02-12.012 12.023-2.001 0-3.971-.496-5.739-1.442L0 24zm6.59-4.846c1.656.983 3.283 1.493 4.908 1.495 5.273-.003 9.566-4.3 9.57-9.575.002-2.553-1-4.954-2.822-6.76C16.483 2.508 14.09 1.51 11.54 1.507 6.269 1.51 1.977 5.803 1.974 11.077c-.002 1.698.463 3.35 1.344 4.814l-.993 3.63 3.722-.967zM17.15 14.39c-.3-.15-1.782-.88-2.057-.98-.275-.1-.475-.15-.675.15-.2.3-.775.98-.95 1.18-.175.2-.35.225-.65.075-1.125-.562-1.925-.975-2.687-1.675-.588-.54-1.163-1.188-1.35-1.5-.187-.313-.025-.487.125-.637.138-.138.3-.35.45-.525.15-.175.2-.3.3-.5.1-.2.05-.375-.025-.525-.075-.15-.675-1.625-.925-2.225-.244-.588-.493-.508-.675-.518-.175-.01-.375-.01-.575-.01-.2 0-.525.075-.8 1.025-.275.95-1.05 3.075-1.05 3.175 0 .1.1 2.05 1.65 3.575 1.263 1.238 2.525 1.525 3.4 1.575.925.05 1.763-.025 2.425-.125.738-.113 1.788-.738 2.038-1.413.25-.675.25-1.25.175-1.375-.075-.125-.275-.2-.575-.35z"/></svg>
+            WhatsApp
+          </a>
+
+          <!-- GITHUB -->
+          <a href="https://github.com/ALEJANDRA346" target="_blank" rel="noopener" class="btn btn-outline">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
             GitHub
-          </a>
-          <a href="mailto:tu@email.com" class="btn btn-outline">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-            Email
           </a>
         </div>
       </div>
       <div class="hero-photo">
-        <!-- PERSONALIZAR: Tu foto (reemplaza el archivo en assets/images/foto.jpg) -->
-        <img src="assets/images/foto.jpg" alt="Tu Nombre" />
+        <img src="assets/images/foto.jpg" alt="Alejandra Ulloa" />
       </div>
     </div>
   </section>
@@ -420,12 +445,11 @@
   <section id="sobre-mi">
     <div class="section-inner">
       <h2 class="section-title" data-i18n="aboutTitle">Sobre mí</h2>
-      <!-- PERSONALIZAR: Tu perfil profesional en ambos idiomas -->
-      <p class="profile-text lang-block" data-lang="es">
-        Escribe aquí tu perfil profesional en español. Describe quién eres, qué haces y qué te diferencia. Incluye años de experiencia y logros cuantificables.
+      <p class="profile-text lang-block" data-lang="es" style="display:none;">
+        Desarrolladora Full Stack Junior (MEAN) enfocada en crear apps web escalables con Angular, Node.js, Express y MongoDB/MySQL. Experiencia práctica en backend estructurado, testing automatizado (Jasmine/Cypress) y diseño UX/UI enfocado en usabilidad. Trabajo bajo metodología Scrum, optimizando el ciclo del software y flujos de trabajo apoyados en IA.
       </p>
-      <p class="profile-text lang-block" data-lang="en" style="display:none;">
-        Write your professional profile in English here. Describe who you are, what you do, and what sets you apart. Include years of experience and quantifiable achievements.
+      <p class="profile-text lang-block" data-lang="en">
+        Junior Full Stack Developer (MEAN) focused on creating scalable web applications with Angular, Node.js, Express, and MongoDB/MySQL. Hands-on experience in structured backend development, automated testing (Jasmine/Cypress), and usability-focused UX/UI design. Proficient in Scrum methodology, optimizing the software development lifecycle and workflows with AI support.
       </p>
     </div>
   </section>
@@ -436,43 +460,79 @@
       <h2 class="section-title" data-i18n="expTitle">Experiencia</h2>
       <div class="jobs">
 
-        <!-- PERSONALIZAR: Agrega/quita job-cards según tu experiencia -->
-        <!-- Usa class="job-card current" para tu empleo actual -->
+        <!-- LEARNING LAB -->
         <div class="job-card current">
           <div class="job-header">
-            <div class="job-company">Empresa Actual</div>
-            <div class="job-role lang-block" data-lang="es">Tu Puesto</div>
-            <div class="job-role lang-block" data-lang="en" style="display:none;">Your Role</div>
-            <div class="job-period lang-block" data-lang="es">Fecha inicio – presente · Ciudad, País (remoto)</div>
-            <div class="job-period lang-block" data-lang="en" style="display:none;">Start date – Present · City, Country (remote)</div>
+            <div class="job-company">Learning Lab</div>
+            <div class="job-role lang-block" data-lang="es" style="display:none;">Líder de Proyecto / Diseñadora de Producto Instruccional</div>
+            <div class="job-role lang-block" data-lang="en">Project Leader / Instructional Product Designer</div>
+            <div class="job-period lang-block" data-lang="es" style="display:none;">Octubre 2023 – Presente · Aguascalientes, México (Remoto)</div>
+            <div class="job-period lang-block" data-lang="en">October 2023 – Present · Aguascalientes, Mexico (Remote)</div>
           </div>
-          <ul class="job-bullets lang-block" data-lang="es">
-            <li>Logro cuantificable con impacto medible</li>
-            <li>Otro logro con cifras o resultados concretos</li>
-            <li>Responsabilidad clave del puesto</li>
+          <ul class="job-bullets lang-block" data-lang="es" style="display:none;">
+            <li>Documentación y Handoff Técnico: Estructuré procesos lógicos, wireflows y especificaciones de producto de extremo a extremo, asegurando la viabilidad técnica y un handoff claro hacia los equipos de ingeniería de software.</li>
+            <li>Coordinación Ágil de Células: Lideré células multidisciplinarias (desarrollo, diseño y negocio) bajo entornos ágiles con marcos de trabajo Scrum, optimizando el seguimiento de sprints, visibilidad de avances y el time-to-market de los entregables interactivos.</li>
           </ul>
-          <ul class="job-bullets lang-block" data-lang="en" style="display:none;">
-            <li>Quantifiable achievement with measurable impact</li>
-            <li>Another achievement with numbers or concrete results</li>
-            <li>Key responsibility of the role</li>
+          <ul class="job-bullets lang-block" data-lang="en">
+            <li>Technical Documentation & Handoff: Structured end-to-end logical processes, wireflows, and product specifications, ensuring technical viability and clean handoff to software engineering teams.</li>
+            <li>Agile Cell Coordination: Led multidisciplinary cells (development, design, and business) under agile environments with Scrum frameworks, optimizing sprint tracking, progress visibility, and time-to-market for interactive deliverables.</li>
           </ul>
         </div>
 
+        <!-- INADAPTADOS -->
         <div class="job-card">
           <div class="job-header">
-            <div class="job-company">Empresa Anterior</div>
-            <div class="job-role lang-block" data-lang="es">Tu Puesto</div>
-            <div class="job-role lang-block" data-lang="en" style="display:none;">Your Role</div>
-            <div class="job-period lang-block" data-lang="es">Fecha inicio – Fecha fin · Ciudad, País</div>
-            <div class="job-period lang-block" data-lang="en" style="display:none;">Start date – End date · City, Country</div>
+            <div class="job-company">Inadaptados</div>
+            <div class="job-role lang-block" data-lang="es" style="display:none;">Full Stack Developer Trainee</div>
+            <div class="job-role lang-block" data-lang="en">Full Stack Developer Trainee</div>
+            <div class="job-period lang-block" data-lang="es" style="display:none;">Noviembre 2024 – Presente · Aguascalientes, México (Remoto)</div>
+            <div class="job-period lang-block" data-lang="en">November 2024 – Present · Aguascalientes, Mexico (Remote)</div>
           </div>
-          <ul class="job-bullets lang-block" data-lang="es">
-            <li>Logro cuantificable con impacto medible</li>
-            <li>Otro logro relevante</li>
+          <ul class="job-bullets lang-block" data-lang="es" style="display:none;">
+            <li>Desarrollo de Aplicaciones Web: Participé activamente en el ciclo de construcción de plataformas e-commerce y sistemas POS estructurando el backend y frontend con Angular y Node.js.</li>
+            <li>Interfaces UI/UX Responsivas: Maqueté vistas web modulares y adaptables traduciendo fielmente los prototipos interactivos diseñados en Figma.</li>
           </ul>
-          <ul class="job-bullets lang-block" data-lang="en" style="display:none;">
-            <li>Quantifiable achievement with measurable impact</li>
-            <li>Another relevant achievement</li>
+          <ul class="job-bullets lang-block" data-lang="en">
+            <li>Web Application Development: Actively participated in the construction cycle of e-commerce platforms and POS systems, structuring the backend and frontend using Angular and Node.js.</li>
+            <li>Responsive UI/UX Interfaces: Developed modular and adaptable web views, faithfully translating interactive prototypes designed in Figma.</li>
+          </ul>
+        </div>
+
+        <!-- MANIFESTO -->
+        <div class="job-card">
+          <div class="job-header">
+            <div class="job-company">Manifesto</div>
+            <div class="job-role lang-block" data-lang="es" style="display:none;">Program Manager</div>
+            <div class="job-role lang-block" data-lang="en">Program Manager</div>
+            <div class="job-period lang-block" data-lang="es" style="display:none;">Febrero 2022 – Mayo 2023 · Aguascalientes, México</div>
+            <div class="job-period lang-block" data-lang="en">February 2022 – May 2023 · Aguascalientes, Mexico</div>
+          </div>
+          <ul class="job-bullets lang-block" data-lang="es" style="display:none;">
+            <li>Liderazgo de Bootcamps Técnicos: Coordiné e impartí entrenamientos intensivos de Figma enfocados en capacitar talento en flujos de diseño de producto y patrones UX/UI modernos.</li>
+            <li>Estrategia del Ciclo de Producto: Supervisé los ciclos de diseño interactivo desde la ideación hasta pruebas con usuarios, acelerando la validación de requerimientos de producto.</li>
+          </ul>
+          <ul class="job-bullets lang-block" data-lang="en">
+            <li>Technical Bootcamp Leadership: Coordinated and delivered intensive Figma training sessions focused on upskilling talent in modern product design workflows and UX/UI patterns.</li>
+            <li>Product Cycle Strategy: Supervised interactive design cycles from ideation to user testing, accelerating the validation of product requirements.</li>
+          </ul>
+        </div>
+
+        <!-- NOVAFARMA -->
+        <div class="job-card">
+          <div class="job-header">
+            <div class="job-company">Novafarma de Aguascalientes</div>
+            <div class="job-role lang-block" data-lang="es" style="display:none;">Gerente de Operaciones y Administración</div>
+            <div class="job-role lang-block" data-lang="en">Operations & Administrative Manager</div>
+            <div class="job-period lang-block" data-lang="es" style="display:none;">Abril 2017 – Febrero 2022 · Aguascalientes, México</div>
+            <div class="job-period lang-block" data-lang="en">April 2017 – February 2022 · Aguascalientes, Mexico</div>
+          </div>
+          <ul class="job-bullets lang-block" data-lang="es" style="display:none;">
+            <li>Automatización de Procesos Internos: Diseñé e implementé sistemas de control de inventarios mediante macros de Excel (VBA), reduciendo tiempos operativos de conciliación de datos.</li>
+            <li>Optimización Financiera y Operativa: Dirigí la planificación presupuestaria, negociaciones con proveedores clave y optimización logística, elevando el margen de beneficio neto del negocio.</li>
+          </ul>
+          <ul class="job-bullets lang-block" data-lang="en">
+            <li>Internal Process Automation: Designed and implemented inventory control systems through Excel Macros (VBA), reducing operational overhead for data reconciliation.</li>
+            <li>Financial & Operational Optimization: Managed budget planning, key vendor negotiations, and logistical alignment, raising the business's net profit margin.</li>
           </ul>
         </div>
 
@@ -486,21 +546,52 @@
       <h2 class="section-title" data-i18n="skillsTitle">Habilidades</h2>
       <div class="skills-grid">
 
-        <!-- PERSONALIZAR: Cambia las categorías y los chips por tus habilidades -->
         <div class="skill-category">
-          <p class="skill-category-label" data-i18n="skillsCat1">Categoría 1</p>
+          <p class="skill-category-label lang-block" data-lang="es" style="display:none;">Desarrollo Full Stack y Core</p>
+          <p class="skill-category-label lang-block" data-lang="en">Full Stack & Core Development</p>
           <div class="chips">
-            <span class="chip">Habilidad 1</span>
-            <span class="chip">Habilidad 2</span>
-            <span class="chip">Habilidad 3</span>
+            <span class="chip">Angular</span>
+            <span class="chip">Node.js</span>
+            <span class="chip">Express</span>
+            <span class="chip">TypeScript</span>
+            <span class="chip">JavaScript (ES6+)</span>
+            <span class="chip">HTML5 / CSS3</span>
+            <span class="chip">Responsive Design</span>
           </div>
         </div>
 
         <div class="skill-category">
-          <p class="skill-category-label" data-i18n="skillsCat2">Categoría 2</p>
+          <p class="skill-category-label lang-block" data-lang="es" style="display:none;">Bases de Datos y Pruebas Automatizadas</p>
+          <p class="skill-category-label lang-block" data-lang="en">Databases & Automated Testing</p>
           <div class="chips">
-            <span class="chip">Herramienta 1</span>
-            <span class="chip">Herramienta 2</span>
+            <span class="chip">MongoDB</span>
+            <span class="chip">MySQL</span>
+            <span class="chip">Jasmine</span>
+            <span class="chip">Cypress</span>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <p class="skill-category-label lang-block" data-lang="es" style="display:none;">Automatización, Scripting e IA</p>
+          <p class="skill-category-label lang-block" data-lang="en">Automation, Scripting & AI Support</p>
+          <div class="chips">
+            <span class="chip">Python</span>
+            <span class="chip">VBA (Excel Macros)</span>
+            <span class="chip">Prompt Engineering (GenAI)</span>
+            <span class="chip">Process Automation</span>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <p class="skill-category-label lang-block" data-lang="es" style="display:none;">Diseño de Producto, UX/UI y Metodologías</p>
+          <p class="skill-category-label lang-block" data-lang="en">Product Design, UX/UI & Methodologies</p>
+          <div class="chips">
+            <span class="chip">Figma (Advanced Prototyping)</span>
+            <span class="chip">UX / UI Design</span>
+            <span class="chip">Scrum Framework</span>
+            <span class="chip">Agile Methodologies</span>
+            <span class="chip">Product Lifecycle Strategy</span>
+            <span class="chip">Technical Documentation & Handoff</span>
           </div>
         </div>
 
@@ -514,32 +605,50 @@
       <h2 class="section-title" data-i18n="projectsTitle">Proyectos</h2>
       <div class="projects-grid">
 
-        <!-- PERSONALIZAR: Agrega tus proyectos -->
-        <div class="project-card">
-          <span class="project-badge badge-personal" data-i18n="badgePersonal">Proyecto personal</span>
-          <h3 class="project-title">Nombre del Proyecto</h3>
-          <p class="project-subtitle lang-block" data-lang="es">Breve descripción · Duración</p>
-          <p class="project-subtitle lang-block" data-lang="en" style="display:none;">Short description · Duration</p>
-          <p class="project-desc lang-block" data-lang="es">
-            Descripción más detallada del proyecto, qué problema resuelve y qué resultados tuvo.
-          </p>
-          <p class="project-desc lang-block" data-lang="en" style="display:none;">
-            More detailed project description: what problem it solves and what results it had.
-          </p>
+        <!-- PROYECTO 1: CAFECITO POS -->
+        <div class="project-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <span class="project-badge badge-personal">Full Stack / POS</span>
+            <h3 class="project-title">Cafecito</h3>
+            <p class="project-subtitle lang-block" data-lang="es" style="display:none;">Sistema de Punto de Venta (POS) · Angular, Express & MongoDB</p>
+            <p class="project-subtitle lang-block" data-lang="en">Point of Sale (POS) System · Angular, Express & MongoDB</p>
+            <p class="project-desc lang-block" data-lang="es" style="display:none;">
+              Plataforma funcional de punto de venta diseñada para optimizar los ciclos de atención, comandas e inventarios estructurando frontend y backend con operaciones CRUD eficientes.
+            </p>
+            <p class="project-desc lang-block" data-lang="en">
+              A functional Point of Sale platform engineered to optimize customer service cycles, order management, and basic inventory control by building frontend and backend CRUD components.
+            </p>
+          </div>
+          <!-- CONTENEDOR ALINEADO AL FONDO -->
+          <div style="margin-top: 2rem; display: flex; justify-content: flex-start;">
+            <a href="https://github.com/ALEJANDRA346" target="_blank" rel="noopener" class="btn btn-outline" style="font-size: 0.85rem; padding: 0.45rem 1rem;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="margin-right: 0.2rem;"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+              View Code
+            </a>
+          </div>
         </div>
 
-        <!-- Ejemplo de proyecto en progreso -->
-        <div class="project-card">
-          <span class="project-badge badge-wip" data-i18n="badgeWIP">En progreso</span>
-          <h3 class="project-title">Otro Proyecto</h3>
-          <p class="project-subtitle lang-block" data-lang="es">Contexto · Tecnología</p>
-          <p class="project-subtitle lang-block" data-lang="en" style="display:none;">Context · Technology</p>
-          <p class="project-desc lang-block" data-lang="es">
-            Descripción del proyecto en desarrollo.
-          </p>
-          <p class="project-desc lang-block" data-lang="en" style="display:none;">
-            Description of the project in development.
-          </p>
+        <!-- PROYECTO 2: E-COMMERCE -->
+        <div class="project-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <span class="project-badge badge-personal" style="color: #9ca3af;">In Progress</span>
+            <h3 class="project-title">E-commerce Platform</h3>
+            <p class="project-subtitle lang-block" data-lang="es" style="display:none;">Tienda en Línea · Angular, Express & MongoDB</p>
+            <p class="project-subtitle lang-block" data-lang="en">Online Store Platform · Angular, Express & MongoDB</p>
+            <p class="project-desc lang-block" data-lang="es" style="display:none;">
+              Desarrollo activo de una tienda virtual modular, estructurando esquemas en MongoDB con catálogo dinámico, carrito de compras y simulación de flujo de checkout.
+            </p>
+            <p class="project-desc lang-block" data-lang="en">
+              Active development of a scalable online storefront using Angular, structuring database models to guarantee a fluid responsive catalog, shopping cart, and checkout flow.
+            </p>
+          </div>
+          <!-- CONTENEDOR ALINEADO AL FONDO -->
+          <div style="margin-top: 2rem; display: flex; justify-content: flex-start;">
+            <a href="https://github.com/ALEJANDRA346" target="_blank" rel="noopener" class="btn btn-outline" style="font-size: 0.85rem; padding: 0.45rem 1rem;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="margin-right: 0.2rem;"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+              View Code
+            </a>
+          </div>
         </div>
 
       </div>
@@ -549,27 +658,45 @@
   <!-- FOOTER / CONTACTO -->
   <footer id="contacto">
     <div class="footer-inner">
-      <!-- PERSONALIZAR: Tu nombre, tagline y links de contacto -->
-      <p class="footer-name">Tu Nombre</p>
-      <p class="footer-tagline" data-i18n="heroTagline">Tu tagline profesional aquí</p>
+      <p class="footer-name">Alejandra Ulloa</p>
+      <p class="footer-tagline">Junior Full Stack Developer (MEAN) | UX/UI Designer | Project Leader</p>
       <div class="footer-links">
-        <a href="mailto:tu@email.com" class="footer-link">
+        <!-- EMAIL -->
+        <a href="mailto:aleulloadls@gmail.com" class="footer-link">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-          tu@email.com
+          aleulloadls@gmail.com
         </a>
-        <a href="https://linkedin.com/in/tu-perfil" target="_blank" rel="noopener" class="footer-link">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        
+        <!-- WHATSAPP -->
+        <a href="https://wa.me/524494148850?text=Hi%20Alejandra,%20I%20visited%20your%20portfolio%20and%20I'd%20like%20to%20connect!" target="_blank" rel="noopener" class="footer-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.003 5.372 5.378 0 12.013 0c3.213.012 6.233 1.277 8.503 3.564 2.27 2.288 3.523 5.322 3.52 8.536-.006 6.645-5.38 12.02-12.012 12.023-2.001 0-3.971-.496-5.739-1.442L0 24zm6.59-4.846c1.656.983 3.283 1.493 4.908 1.495 5.273-.003 9.566-4.3 9.57-9.575.002-2.553-1-4.954-2.822-6.76C16.483 2.508 14.09 1.51 11.54 1.507 6.269 1.51 1.977 5.803 1.974 11.077c-.002 1.698.463 3.35 1.344 4.814l-.993 3.63 3.722-.967zM17.15 14.39c-.3-.15-1.782-.88-2.057-.98-.275-.1-.475-.15-.675.15-.2.3-.775.98-.95 1.18-.175.2-.35.225-.65.075-1.125-.562-1.925-.975-2.687-1.675-.588-.54-1.163-1.188-1.35-1.5-.187-.313-.025-.487.125-.637.138-.138.3-.35.45-.525.15-.175.2-.3.3-.5.1-.2.05-.375-.025-.525-.075-.15-.675-1.625-.925-2.225-.244-.588-.493-.508-.675-.518-.175-.01-.375-.01-.575-.01-.2 0-.525.075-.8 1.025-.275.95-1.05 3.075-1.05 3.175 0 .1.1 2.05 1.65 3.575 1.263 1.238 2.525 1.525 3.4 1.575.925.05 1.763-.025 2.425-.125.738-.113 1.788-.738 2.038-1.413.25-.675.25-1.25.175-1.375-.075-.125-.275-.2-.575-.35z"/></svg>
+          WhatsApp
+        </a>
+
+        <!-- LINKEDIN CORREGIDO -->
+        <a href="https://www.linkedin.com/in/alejandraulloa/" target="_blank" rel="noopener" class="footer-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M22.23 0H1.77C.8 0 0 .77 0 1.72v20.56C0 23.23.8 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.72V1.72C24 .77 23.2 0 22.23 0zM7.12 20.45H3.56V9h3.56v11.45zM5.34 7.55c-1.14 0-2.06-.92-2.06-2.05 0-1.14.92-2.06 2.06-2.06 1.14 0 2.06.92 2.06 2.06 0 1.13-.92 2.05-2.06 2.05zm15.11 12.9H16.9v-5.61c0-1.34-.03-3.05-1.86-3.05-1.86 0-2.13 1.45-2.13 2.95v5.71H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29z"/></svg>
           LinkedIn
         </a>
-        <a href="https://github.com/tu-usuario" target="_blank" rel="noopener" class="footer-link">
+        
+        <!-- GITHUB -->
+        <a href="https://github.com/ALEJANDRA346" target="_blank" rel="noopener" class="footer-link">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
           GitHub
         </a>
       </div>
-      <p class="footer-copy">&copy; 2026 Tu Nombre</p>
+      <p class="footer-copy">&copy; 2026 Alejandra Ulloa. All rights reserved.</p>
     </div>
   </footer>
 
+  <!-- INTERCEPCIÓN PARA IDIOMA DEFAULT INGLÉS -->
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      if (typeof toggleLang === 'function' && document.getElementById('lang-es').classList.contains('active')) {
+         toggleLang();
+      }
+    });
+  </script>
   <script src="js/main.js"></script>
 </body>
 </html>
